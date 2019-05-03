@@ -15,6 +15,8 @@ type Action interface {
 type Parse interface {
 	makeParam()
 }
+
+//Object set FowardMessage method
 type ToForward struct {
 	ChatID     int
 	FromChatID int
@@ -22,12 +24,14 @@ type ToForward struct {
 	Text       string
 }
 
+//Object set to reply_to_message_id in SendMessage method
 type ToReply struct {
 	ChatID    int
 	MessageID int
 	Text      string
 }
 
+//Object set to SendMessage
 type ToSend struct {
 	ChatID int
 	Text   string

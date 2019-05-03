@@ -2,22 +2,18 @@ package telego
 
 import (
 	"fmt"
-	//"strings"
 	"net/url"
 	"strconv"
 )
 
+//Handle usual errors
 func handle_erro(err error) {
 	if err != nil {
 		fmt.Println(err)
 	}
 }
 
-/*
-func is_command(message SetMessage) bool {
-	return message.Entity.Type == "bot_command"
-}*/
-
+//Set the the url to make a forwardMessage request
 func (forward *ToForward) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("text", forward.Text)
@@ -28,6 +24,7 @@ func (forward *ToForward) makeParam() url.Values {
 	return param
 }
 
+//Set the the url to make a reply_to_message_id request
 func (reply *ToReply) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("text", reply.Text)
@@ -37,10 +34,10 @@ func (reply *ToReply) makeParam() url.Values {
 	return param
 }
 
+//Set the the url to make a SendMessage request
 func (send *ToSend) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("text", send.Text)
 	param.Set("chat_id", strconv.Itoa(send.ChatID))
-	fmt.Println(send.Text)
 	return param
 }
