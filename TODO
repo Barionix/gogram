@@ -1,0 +1,20 @@
+Criar funções/metodos send
+criar utils(is_command) [PARCIAL][OK]
+melhorar código [PARCIAL]
+Remover todas as globais que eu puder
+reestruturar arquivos [OK]
+apply urlValues{}[OK] [PARCIAL]
+Fazer Updates com Chan
+Comentar
+fazer MakeParam dos outros stucts[OK][PARCIAL]
+Setar wenhook
+fazer testes [PARCIAL]
+
+MISSING TYPE:
+
+migra to chat id
+migra from chat id
+invoice
+sucessful payment
+connected website
+passport data
