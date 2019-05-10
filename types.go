@@ -5,14 +5,13 @@ import (
 	"net/url"
 )
 
-//Variaveis de uso geral
+
 var (
 	API_ADRESS string
 	Response   string
 	NewMsg     bool
 	Bind       Updater
 	BindG      MeBot
-	//Updated    SetMessage
 	Config      Load
 	Concatenado url.Values
 	Nova        SetMessage
@@ -33,6 +32,7 @@ type Load struct {
 	Current int
 	Client  *http.Client
 	Updated SetMessage
+	Response string
 }
 
 type SetEntity struct {
