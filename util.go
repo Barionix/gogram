@@ -22,8 +22,8 @@ func (Config *Load) makeAPIrequest(concatenado url.Values) (string, int) {
 	resp, err := http.PostForm(API_ADRESS, concatenado)
 	defer resp.Body.Close()
 	body, er := ioutil.ReadAll(resp.Body)
-	json.Unmarshal(body, &Bind)
 	//fmt.Println(string(body))
+	json.Unmarshal(body, &Bind)
 	handle_erro(err)
 	handle_erro(er)
 	return string(body), resp.StatusCode
@@ -61,13 +61,49 @@ func (send *ToSend) makeParam() url.Values {
 func (photo *ToSendPhoto) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(photo.ChatID))
-	param.Set("photo", photo.Photo)
+	param.Set("photo", photo.PhotoID)
 	return param
 }
 
 func (audio *ToSendAudio) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(audio.ChatID))
-	param.Set("audio", audio.Audio)
+	param.Set("audio", audio.AudioID)
+	return param
+}
+
+func (document *ToSendDocument) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(document.ChatID))
+	param.Set("document", document.DocumentID)
+	return param
+}
+
+func (video *ToSendVideo) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(video.ChatID))
+	param.Set("video", video.VideoID)
+	return param
+}
+
+func (animation *ToSendAnimation) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(animation.ChatID))
+	param.Set("animation", animation.AnimationID)
+	return param
+}
+
+func (voice *ToSendVoice) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(voice.ChatID))
+	param.Set("voice", voice.VoiceID)
+	return param
+}
+
+func (location *ToSendLocation) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(location.ChatID))
+	param.Set("latitude", fmt.Sprintf("%f",location.Latitude))
+	param.Set("longitude", fmt.Sprintf("%f",location.Longitude))
 	return param
 }

@@ -6,6 +6,11 @@ type SetValues struct {
 	sending      ToSend
 	sendingphoto ToSendPhoto
 	sendingaudio ToSendAudio
+	sendingdocument ToSendDocument
+	sendingvideo ToSendVideo
+	sendinganimation ToSendAnimation
+	sendingvoice ToSendVoice
+	sendinglocation ToSendLocation
 }
 
 var MessageBind SetValues
@@ -41,10 +46,36 @@ type ToSend struct {
 
 type ToSendPhoto struct {
 	ChatID int
-	Photo  string
+	PhotoID  string
 }
 
 type ToSendAudio struct {
 	ChatID int
-	Audio  string
+	AudioID  string
+}
+
+type ToSendDocument struct {
+	ChatID int
+	DocumentID  string
+}
+
+type ToSendVideo struct {
+	ChatID int
+	VideoID  string
+}
+
+type ToSendAnimation struct {
+	ChatID int
+	AnimationID  string
+}
+
+type ToSendVoice struct {
+	ChatID int
+	VoiceID  string
+}
+
+type ToSendLocation struct {
+	ChatID int
+	Latitude  float64
+	Longitude float64
 }

@@ -67,16 +67,66 @@ func (Config *Load) SendPhoto(chat_id int, photo string) int {
 	return stat
 }
 
-func (Config *Load) SendAudio(chat_id int, photo string) int {
+func (Config *Load) SendAudio(chat_id int, audio string) int {
 	Config.Metodo = "sendAudio"
 	MessageBind.sendingaudio = ToSendAudio{
 		chat_id,
-		photo,
+		audio,
 	}
 	_, stat := Config.makeAPIrequest(MessageBind.sendingaudio.makeParam())
 	return stat
 }
 
+func (Config *Load) SendDocument(chat_id int, document string) int {
+	Config.Metodo = "sendDocument"
+	MessageBind.sendingdocument = ToSendDocument{
+		chat_id,
+		document,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.sendingdocument.makeParam())
+	return stat
+}
+
+func (Config *Load) SendVideo(chat_id int, video string) int {
+	Config.Metodo = "sendVideo"
+	MessageBind.sendingvideo = ToSendVideo{
+		chat_id,
+		video,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.sendingvideo.makeParam())
+	return stat
+}
+
+func (Config *Load) SendAnimation(chat_id int, animation string) int {
+	Config.Metodo = "sendAnimation"
+	MessageBind.sendinganimation = ToSendAnimation{
+		chat_id,
+		animation,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.sendinganimation.makeParam())
+	return stat
+}
+
+func (Config *Load) SendVoice(chat_id int, voice string) int {
+	Config.Metodo = "sendVoice"
+	MessageBind.sendingvoice = ToSendVoice{
+		chat_id,
+		voice,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.sendingvoice.makeParam())
+	return stat
+}
+
+func (Config *Load) SendLocation(chat_id int, latitude float64, longitude float64) int {
+	Config.Metodo = "sendLocation"
+	MessageBind.sendinglocation = ToSendLocation{
+		chat_id,
+		latitude,
+		longitude,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.sendinglocation.makeParam())
+	return stat
+}
 //Make a "getUpdates" requests and handle the json
 func (Config *Load) GetAllUpdates() (bool, SetMessage) {
 	Config.Metodo = "getUpdates"
