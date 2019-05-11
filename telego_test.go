@@ -2,7 +2,6 @@ package telego
 
 import (
 	"testing"
-	"fmt"
 )
 
 var Bot Load = Conf("811530665:AAG5X41LQS5tJbwBaTmbs8tVXgeWYGhqYrM")
@@ -28,6 +27,20 @@ func TestReply_TO(t *testing.T) {
 	}
 }
 
+func TestSendPhoto(t *testing.T) {
+	try := Bot.SendPhoto(476036515, "AgADAQADF6gxG0nGsEbYLmuxSm6YlGwdFDAABI1ha-i8vPBpih4CAAEC")
+	if try != 200 {
+		t.Fatalf("Something went wrong in SendPhoto.\nStatus Code:[%d]", try)
+	}
+}
+
+func TestSendAudio(t *testing.T) {
+	try := Bot.SendAudio(476036515, "CQADAgADmIoDAAEcg5gKx_YQOaoQbjoC")
+	if try != 200 {
+		t.Fatalf("Something went wrong in SendAudio.\nStatus Code:[%d]", try)
+	}
+}
+
 func TestFoward(t *testing.T) {
 	Config.Updated.Chat.ID = 476036515
 	Config.Updated.MessageID = 2
@@ -39,7 +52,6 @@ func TestFoward(t *testing.T) {
 
 func TestGetMe(t *testing.T) {
 	me := Bot.GetMe()
-	fmt.Println(me.Ok)
 	if !me.Ok {
 		t.Fatalf("Eror in getMe!")
 	}

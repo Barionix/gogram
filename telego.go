@@ -2,10 +2,10 @@ package telego
 
 import (
 	"encoding/json"
-	//"fmt"
-//	"io/ioutil"
-//	"net/http"
-	//"net/url"
+	//	"fmt"
+	//	"io/ioutil"
+	//	"net/http"
+	"net/url"
 )
 
 //Set the bot token
@@ -13,8 +13,6 @@ func Conf(token string) Load {
 	Config.Token = token
 	return Config
 }
-
-
 
 //Send a message
 func (Config *Load) Send_Message(chat_id int, text string) int {
@@ -42,7 +40,7 @@ func (Config *Load) Reply_To(message SetMessage, chat_id int, text string) int {
 //Get the bot info
 func (Config *Load) GetMe() MeBot {
 	Config.Metodo = "getMe"
-	Response, _ = Config.makeAPIrequest(Concatenado)
+	Response, _ = Config.makeAPIrequest(url.Values{})
 	json.Unmarshal([]byte(Response), &BindG)
 	return BindG
 }
@@ -59,10 +57,30 @@ func (Config *Load) ForwardMessage(message SetMessage, chat_id int) int {
 	return stat
 }
 
+func (Config *Load) SendPhoto(chat_id int, photo string) int {
+	Config.Metodo = "sendPhoto"
+	MessageBind.sendingphoto = ToSendPhoto{
+		chat_id,
+		photo,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.sendingphoto.makeParam())
+	return stat
+}
+
+func (Config *Load) SendAudio(chat_id int, photo string) int {
+	Config.Metodo = "sendAudio"
+	MessageBind.sendingaudio = ToSendAudio{
+		chat_id,
+		photo,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.sendingaudio.makeParam())
+	return stat
+}
+
 //Make a "getUpdates" requests and handle the json
 func (Config *Load) GetAllUpdates() (bool, SetMessage) {
 	Config.Metodo = "getUpdates"
-	_, _ = Config.makeAPIrequest(Concatenado)
+	_, _ = Config.makeAPIrequest(url.Values{})
 	for _, msg := range Bind.Result {
 		Nova = msg.Message
 	}

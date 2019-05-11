@@ -1,9 +1,11 @@
 package telego
 
 type SetValues struct {
-	forwarding ToForward
-	replying   ToReply
-	sending    ToSend
+	forwarding   ToForward
+	replying     ToReply
+	sending      ToSend
+	sendingphoto ToSendPhoto
+	sendingaudio ToSendAudio
 }
 
 var MessageBind SetValues
@@ -35,4 +37,14 @@ type ToReply struct {
 type ToSend struct {
 	ChatID int
 	Text   string
+}
+
+type ToSendPhoto struct {
+	ChatID int
+	Photo  string
+}
+
+type ToSendAudio struct {
+	ChatID int
+	Audio  string
 }

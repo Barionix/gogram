@@ -2,18 +2,16 @@ package telego
 
 import (
 	"net/http"
-	"net/url"
+//	"net/url"
 )
 
-
 var (
-	API_ADRESS string
-	Response   string
-	NewMsg     bool
-	Bind       Updater
-	BindG      MeBot
+	API_ADRESS  string
+	Response    string
+	NewMsg      bool
+	Bind        Updater
+	BindG       MeBot
 	Config      Load
-	Concatenado url.Values
 	Nova        SetMessage
 )
 
@@ -27,11 +25,11 @@ type SetUser struct {
 }
 
 type Load struct {
-	Token   string
-	Metodo  string
-	Current int
-	Client  *http.Client
-	Updated SetMessage
+	Token    string
+	Metodo   string
+	Current  int
+	Client   *http.Client
+	Updated  SetMessage
 	Response string
 }
 

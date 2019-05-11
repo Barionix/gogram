@@ -1,12 +1,12 @@
 package telego
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 	"net/url"
 	"strconv"
-	"net/http"
-	"io/ioutil"
-	"encoding/json"
 )
 
 //Handle usual errors
@@ -14,6 +14,19 @@ func handle_erro(err error) {
 	if err != nil {
 		fmt.Println(err)
 	}
+}
+
+//Make the requests
+func (Config *Load) makeAPIrequest(concatenado url.Values) (string, int) {
+	API_ADRESS = fmt.Sprintf("https://api.telegram.org/bot%s/%s", Config.Token, Config.Metodo)
+	resp, err := http.PostForm(API_ADRESS, concatenado)
+	defer resp.Body.Close()
+	body, er := ioutil.ReadAll(resp.Body)
+	json.Unmarshal(body, &Bind)
+	//fmt.Println(string(body))
+	handle_erro(err)
+	handle_erro(er)
+	return string(body), resp.StatusCode
 }
 
 //Set the the url to make a forwardMessage request
@@ -45,16 +58,16 @@ func (send *ToSend) makeParam() url.Values {
 	return param
 }
 
+func (photo *ToSendPhoto) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(photo.ChatID))
+	param.Set("photo", photo.Photo)
+	return param
+}
 
-
-//Make the requests
-func (Config *Load) makeAPIrequest(concatenado url.Values) (string, int) {
-	API_ADRESS = fmt.Sprintf("https://api.telegram.org/bot%s/%s", Config.Token, Config.Metodo)
-	resp, err := http.PostForm(API_ADRESS, concatenado)
-	defer resp.Body.Close()
-	body, er := ioutil.ReadAll(resp.Body)
-	json.Unmarshal(body, &Bind)
-	handle_erro(err)
-	handle_erro(er)
-	return string(body), resp.StatusCode
+func (audio *ToSendAudio) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(audio.ChatID))
+	param.Set("audio", audio.Audio)
+	return param
 }
