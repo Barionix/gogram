@@ -13,6 +13,7 @@ var (
 	BindG       MeBot
 	Config      Load
 	Nova        SetMessage
+	
 )
 
 type SetUser struct {

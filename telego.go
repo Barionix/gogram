@@ -2,9 +2,6 @@ package telego
 
 import (
 	"encoding/json"
-	//	"fmt"
-	//	"io/ioutil"
-	//	"net/http"
 	"net/url"
 )
 
@@ -146,3 +143,39 @@ func (Config *Load) GetAllUpdates() (bool, SetMessage) {
 	return NewMsg, Nova
 
 }
+
+//Webhook
+
+func (Config *Load) SetWebhookWithCert(url string, certificate string) int{
+	Config.Metodo = "setWebhook"
+	MessageBind.settingwebhookwithcert = ToSetWebhookWithCert{
+		url,
+		certificate,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.settingwebhookwithcert.makeParam())
+	return stat
+}
+
+
+func (Config *Load) SetWebhook(url string) int{
+	Config.Metodo = "setWebhook"
+	MessageBind.settingwebhook = ToSetWebhook{
+		url,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.settingwebhook.makeParam())
+	return stat
+}
+
+func (Config *Load) DeleteWebhook() int{
+	Config.Metodo = "DeleteWebhook"
+	_, stat := Config.makeAPIrequest(url.Values{})
+	return stat
+}
+	
+ 
+func (Config *Load) GetWebhookinfo() (string, int){
+	Config.Metodo = "getWebhookinfo"
+	res, stat := Config.makeAPIrequest(url.Values{})
+	return res, stat
+}
+	

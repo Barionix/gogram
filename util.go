@@ -22,7 +22,7 @@ func (Config *Load) makeAPIrequest(concatenado url.Values) (string, int) {
 	resp, err := http.PostForm(API_ADRESS, concatenado)
 	defer resp.Body.Close()
 	body, er := ioutil.ReadAll(resp.Body)
-	//fmt.Println(string(body))
+	fmt.Println(string(body))
 	json.Unmarshal(body, &Bind)
 	handle_erro(err)
 	handle_erro(er)
@@ -107,3 +107,18 @@ func (location *ToSendLocation) makeParam() url.Values {
 	param.Set("longitude", fmt.Sprintf("%f",location.Longitude))
 	return param
 }
+
+
+func (webhook *ToSetWebhookWithCert) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("url", webhook.Url)
+	param.Set("certificate", webhook.Certificate)
+	return param
+}
+
+func (webhook *ToSetWebhook) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("url", webhook.Url)
+	return param
+}
+

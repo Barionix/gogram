@@ -11,6 +11,8 @@ type SetValues struct {
 	sendinganimation ToSendAnimation
 	sendingvoice ToSendVoice
 	sendinglocation ToSendLocation
+	settingwebhook ToSetWebhook
+	settingwebhookwithcert ToSetWebhookWithCert
 }
 
 var MessageBind SetValues
@@ -78,4 +80,13 @@ type ToSendLocation struct {
 	ChatID int
 	Latitude  float64
 	Longitude float64
+}
+
+type ToSetWebhookWithCert struct {
+	Url string
+	Certificate  string
+}
+
+type ToSetWebhook struct {
+	Url string
 }
