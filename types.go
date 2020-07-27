@@ -140,7 +140,13 @@ type SetVenue struct {
 	FoursquareType string      `json:"foursquare_type"`
 }
 
-type PollOption struct {
+type SetPollOption struct {
+	PollID     string  `json:"poll_id"`
+	User       SetUser `json:"user"`
+	OptionsIDS []int   `json:"option_ids"`
+}
+
+type SetPollAnswer struct {
 	Text       string `json:"text"`
 	VoterCount int    `json:"voteCount"`
 }
@@ -186,10 +192,19 @@ type SetMessage struct {
 }
 
 type SetPoll struct {
-	ID       string       `json:"id"`
-	Question string       `json:"question"`
-	Option   []PollOption `json:"poll_option"`
-	IsClosed bool         `json:"is_closed"`
+	ID                  string               `json:"id"`
+	Question            string               `json:"question"`
+	Option              []SetPollOption      `json:"poll_option"`
+	IsClosed            bool                 `json:"is_closed"`
+	TotalVoterCounter   int                  `json:"total_voter_count"`
+	IsAnonymous         bool                 `json:"is_anonymous"`
+	Type                string               `json:"type"`
+	AllowMutipleAnswers bool                 `json:"allows_multiple_answers"`
+	CorrectOptionID     int                  `json:"correct_option_id"`
+	Explanation         string               `json:"explanation"`
+	ExplanationEntities []SetMessageEntities `json:"explanation_entities"`
+	OpenPeriod          int                  `json:"open_period"`
+	CloseDate           int                  `json:"close_date"`
 }
 
 type SetGame struct {
@@ -226,6 +241,186 @@ type SetFile struct {
 	FileSize int    `json:"file_size"`
 	FilePath string `json:"file_path"`
 }
+
+type SetDice struct {
+	Emoji string `json:"emoji"`
+	Value int    `json:"value"`
+}
+
+type SetInputMediaPhoto struct {
+	Type       string `json:"type"`
+	Media      string `json:"media"`
+	Caption    string `json:"caption"`
+	Parse_mode string `json:"parse_mode"`
+}
+
+type SetInputMediaVideo struct {
+	Type               string `json:"type"`
+	Media              string `json:"media"`
+	Thumb              string `json:"thumb"`
+	Caption            string `json:"caption"`
+	Parse_mode         string `json:"parse_mode"`
+	Width              int    `json:"width"`
+	Height             int    `json:"height"`
+	Duration           int    `json:"duration"`
+	Supports_streaming bool   `json:"supports_streaming"`
+}
+
+type SetInputMediaAnimation struct {
+	Type string `json:"type"`
+	Media string `json:"media"`
+	Thumb string `json:"thumb"`
+	Caption string `json:"caption"`
+	Parse_mode string `json:"parse_mode"`
+	Duration int `json:"duration"`
+	Perfomer string `json:"performer"`
+	Title string `json:"title"`
+}
+
+type SetInputMediaDocument struct {
+	Type string `json:"type"`
+	Media string `json:"media"`
+	Thumb string `json:"thumb"`
+	Caption string `json:"caption"`
+	Parse_mode string `json:"parse_mode"`
+}
+type SetMediaGroup struct {
+	ChatID               int                `json:"chat_id"`
+	Media                SetInputMediaPhoto `json:"media"`
+	Disable_Notification bool               `json:"disable_notification"`
+	ReplyToMessageID     int                `json:"reply_to_message_id"`
+}
+
+type SetMessageEntities struct {
+	Type     string  `json:"type"`
+	Offset   int     `json:"offset"`
+	Length   int     `json:"length"`
+	Url      string  `json:"url"`
+	User     SetUser `json:"user"`
+	Language string  `json:"language"`
+}
+
+type SetReplyKeyboardMarkup struct {
+	keyboard        []SetKeyboardButton `json:"keyboard"`
+	ResizeKeyboard  bool                `json:"resize_keyboard"`
+	OneTimeKeyboard bool                `json:"one_time_keyboard"`
+	SelectiveButton bool                `json:"selective"`
+}
+
+type SetKeyboardButton struct {
+	Text            string                    `json:"text"`
+	RequestContract bool                      `json:"request_contact"`
+	RequestLocation bool                      `json:"request_location"`
+	RequestPoll     SetKeyboardButtonPollType `json:"request_poll"`
+}
+
+type SetKeyboardButtonPollType struct {
+	Type string `json:"type"`
+}
+
+type SetReplyKeyboardRemove struct {
+	RemoveKeyboard bool `json:"remove_keyboard"`
+	Selective      bool `json:"selective"`
+}
+
+type SetInlineKeyboardMarkup struct {
+	InlineKeyboard [][]SetInlineKeyboardButton `json:"inline_keyboard"`
+}
+
+type SetInlineKeyboardButton struct {
+	Text                         string          `json:"text"`
+	Url                          string          `json:"url"`
+	LoginUrl                     SetLoginUrl     `json:"login_url"`
+	CallBackData                 string          `json:"callback_data"`
+	SwitchInlineQuery            string          `json:"switch_inline_query"`
+	SwitchInlineQueryCurrentChat string          `json:"switch_inline_query_current_chat"`
+	CallBackGame                 SetCallBackGame `json:"callback_game"`
+	Pay                          bool            `json:"pay"`
+}
+
+type SetCallBackGame struct {
+	UserID             int    `json:"user_id"`
+	Score              int    `json:"score"`
+	Force              bool   `json:"force"`
+	DisableEditMessage bool   `json:"disable_edit_message"`
+	ChatID             int    `json:"chat_id"`
+	MessageID          int    `json:"message_id"`
+	InlineMessageID    string `json:"inline_message_id"`
+}
+
+type SetLoginUrl struct {
+	Url                string `json:"url"`
+	FowardText         string `jsong:"forward_text"`
+	BotUsername        string `json:"bot_username"`
+	RequestWriteAccess bool   `json:"request_write_access"`
+}
+
+type SetCallbackQuery struct {
+	ID string `json:"id"`
+	From SetUser `json:"from"`
+	Message SetMessage `json:"message"`
+	InlineMessageID string `json:"inline_message_id"`
+	ChatInsance string `json:"chat_instance"`
+	Data string `json:"data"`
+	GameShortName string `json:"game_short_name"`
+}
+
+
+type SetForceReply struct {
+	ForceReply bool `json:"force_reply"`
+	Selective bool `json:"selective"`
+}
+
+type SetChatPhoto struct {
+	SmallFileID string `json:"small_file_id"`
+	SmallFileUniqueID string `json:"small_file_unique_id"`
+	BigFileID string `json:"big_file_id"`
+	BigFileUniqueID string `json:"big_file_unique_id"`
+}
+
+type SetChatMember struct {
+	User SetUser `json:"user"`
+	Status string `json:"status"`
+	CustomTitle string `json:"custom_title"`
+	UntilDate int `json:"until_date"`
+	CanBeEdited bool `json:"can_be_edited"`
+	CanPostMessage bool `json:"can_post_messages"`
+	CanEditMessage bool `json:"can_edit_messages"`
+	CanDeleteMessage bool `json:"can_delete_messages"`
+	CanRestrictMembers bool `json:"can_restrict_members"`
+	CanPromoteMembers bool `json:"can_promote_members"`
+	CanChangeInfo bool `json:"can_change_info"`
+	CanInviteUsers bool `json:"can_invite_users"`
+	CanPinMessage bool `json:"can_pin_messages"`
+	IsMember bool `json:"is_member"`
+	CanSendMessages bool `json:"can_send_messages"`
+	CanSendMediaMessage bool `json:"can_send_media_messages"`
+	CanSendPolls bool `json:"can_send_polls"`
+	CanSendOtherMessages bool `json:"can_send_other_messages"`
+	CanAddWebPagePreviews bool `json:"can_add_web_page_previews"`
+}
+
+type SetChatPermissions struct {
+	CanSendMessages bool `json:"can_send_messages"`
+	CanSendMediaMessage bool `json:"can_send_media_messages"`
+	CanSendPolls bool `json:"can_send_polls"`
+	CanSendOtherMessages bool `json:"can_send_other_messages"`
+	CanAddWebPagePreviews bool `json:"can_add_web_page_previews"`
+	CanChangeInfo bool `json:"can_change_info"`
+	CanInviteUsers bool `json:"can_invite_users"`
+	CanPinMessage bool `json:"can_pin_messages"`
+}
+
+type SetBotCommand struct {
+	Command string `json:"command"`
+	Description string `json:"description"`
+}
+
+type SetResponseParameters struct {
+	MigrateToChatID string `json:"migrate_to_chat_id"`
+	RetryAfter int `json:"retry_after"`
+}
+
 type MeBot struct {
 	Ok     bool `json:"ok"`
 	Result struct {

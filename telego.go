@@ -125,6 +125,8 @@ func (Config *API) SendLocation(chat_id int, latitude float64, longitude float64
 	return stat
 }
 
+func (Config *API) SendMediaGrou()
+
 //Make a "getUpdates" requests and handle the json
 func (Config *API) GetAllUpdates() (bool, SetMessage) {
 	Config.Method = "getUpdates"
