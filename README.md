@@ -5,13 +5,23 @@
 
 The Telego package makes the API handling easier so you can easily build a telegram bot with a few lines of code.
 
+## Installing
+You can install the package by using the `go get` command.
+` go get -u github.com/JuniorMario/telego` 
+
+or you can clone the repositoy and move it to the your GOPATH
+``` 
+$ git clone https://github.com/JuniorMario/telego
+$ mv telego $GOPATH
+``` 
+
 ### Simple bot example
 
 ``` 
 package main
 
 import (
-	"telego"
+	"github.com/JuniorMario/telego"
 )
 
 func main() {
