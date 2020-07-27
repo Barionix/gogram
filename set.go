@@ -1,4 +1,4 @@
-package telego
+package gogram
 
 type SetValues struct {
 	forwarding   ToForward
