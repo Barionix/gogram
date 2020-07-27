@@ -4,10 +4,10 @@ import (
 	"testing"
 )
 
-var Bot Load = Conf("811530665:AAG5X41LQS5tJbwBaTmbs8tVXgeWYGhqYrM")
+var Bot API = SetNewBot("811530665:AAG5X41LQS5tJbwBaTmbs8tVXgeWYGhqYrM")
 
 func TryConf(t *testing.T) {
-	Bot := Conf("811530665:AAG5X41LQS5tJbwBaTmbs8tVXgeWYGhqYrM")
+	Bot := SetNewBot("811530665:AAG5X41LQS5tJbwBaTmbs8tVXgeWYGhqYrM")
 	if Bot.Token == "" {
 		t.Fatalf("TOKEN NULO")
 	}
