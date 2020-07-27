@@ -7,13 +7,13 @@
 The Gogram package makes the API handling easier so you can easily build a telegram bot with a few lines of code.
 
 ## Installing
-You can install the package by using the `go get` command.
+You can install the package by using the `go get` command:
 ` go get -u github.com/JuniorMario/gogram` 
 
-or you can clone the repositoy and move it to the your GOPATH
+or you can clone the repositoy and move it to  your GOPATH
 ``` 
 $ git clone https://github.com/JuniorMario/gogram
-$ mv telego $GOPATH
+$ mv gogram $GOPATH
 ``` 
 
 ### Simple bot example
