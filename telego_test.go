@@ -76,10 +76,6 @@ func TestSendLocation(t *testing.T) {
 	}
 }
 
-
-
-
-
 func TestFoward(t *testing.T) {
 	Config.Updated.Chat.ID = 476036515
 	Config.Updated.MessageID = 2

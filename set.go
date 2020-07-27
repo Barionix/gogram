@@ -1,17 +1,17 @@
 package gogram
 
 type SetValues struct {
-	forwarding   ToForward
-	replying     ToReply
-	sending      ToSend
-	sendingphoto ToSendPhoto
-	sendingaudio ToSendAudio
-	sendingdocument ToSendDocument
-	sendingvideo ToSendVideo
-	sendinganimation ToSendAnimation
-	sendingvoice ToSendVoice
-	sendinglocation ToSendLocation
-	settingwebhook ToSetWebhook
+	forwarding             ToForward
+	replying               ToReply
+	sending                ToSend
+	sendingphoto           ToSendPhoto
+	sendingaudio           ToSendAudio
+	sendingdocument        ToSendDocument
+	sendingvideo           ToSendVideo
+	sendinganimation       ToSendAnimation
+	sendingvoice           ToSendVoice
+	sendinglocation        ToSendLocation
+	settingwebhook         ToSetWebhook
 	settingwebhookwithcert ToSetWebhookWithCert
 }
 
@@ -47,44 +47,44 @@ type ToSend struct {
 }
 
 type ToSendPhoto struct {
-	ChatID int
-	PhotoID  string
+	ChatID  int
+	PhotoID string
 }
 
 type ToSendAudio struct {
-	ChatID int
-	AudioID  string
+	ChatID  int
+	AudioID string
 }
 
 type ToSendDocument struct {
-	ChatID int
-	DocumentID  string
+	ChatID     int
+	DocumentID string
 }
 
 type ToSendVideo struct {
-	ChatID int
-	VideoID  string
+	ChatID  int
+	VideoID string
 }
 
 type ToSendAnimation struct {
-	ChatID int
-	AnimationID  string
+	ChatID      int
+	AnimationID string
 }
 
 type ToSendVoice struct {
-	ChatID int
-	VoiceID  string
+	ChatID  int
+	VoiceID string
 }
 
 type ToSendLocation struct {
-	ChatID int
+	ChatID    int
 	Latitude  float64
 	Longitude float64
 }
 
 type ToSetWebhookWithCert struct {
-	Url string
-	Certificate  string
+	Url         string
+	Certificate string
 }
 
 type ToSetWebhook struct {
