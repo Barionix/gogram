@@ -1,4 +1,4 @@
-# Telego 0.1
+# Gogram - 0.1
 ### A Wrapper to the telegram bot API
 
 [![GoDoc](https://godoc.org/github.com/JuniorMario/gogram?status.svg)](http://godoc.org/github.com/JuniorMario/gogram)
@@ -37,9 +37,30 @@ func main() {
 
 The code above start the bot, listen to incomin messages and returns a JSON containing the messages info.
 
+## Available Methdos
+| Method | Status | Tested |
+| ------ | ------ | ------ |
+| Send_Message | Done | Yes |
+| Reply_To | Done | Yes |
+| GetMe | Done | Yes |
+| FowardMessage | Done | Yes |
+| SendPhoto | Done | Yes |
+| SendAudio | Done | Yes |
+| SendDocument | Done | Yes |
+| SendVideo | Done | Yes |
+| SendAnimation | Done | Yes |
+| SendVoice | Done | Yes |
+| SendLocation | Done | Yes |
+| GetAllUpdates | Done | Yes |
+| GetMsgUpdates | Done | Yes |
+
+
+
 
 ## Colaborators
 | Title | Telegram | Github | Linkedin |
 | ------ | ------ | ------ | ------ |
 | Developer | [Mario](t.me/Barionixx) | [JuniorMario](https://github.com/JuniorMario/) | [Mário Soares](https://www.linkedin.com/in/mariojrsoares/) |
+
+
 
