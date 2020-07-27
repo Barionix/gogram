@@ -36,3 +36,10 @@ func main() {
 ```
 
 The code above start the bot, listen to incomin messages and returns a JSON containing the messages info.
+
+
+## Colaborators
+| Title | Telegram | Github | Linkedin |
+| ------ | ------ | ------ | ------ |
+| Developer | [Mario](t.me/Barionixx) | [JuniorMario](https://github.com/JuniorMario/) | [Mário Soares](https://www.linkedin.com/in/mariojrsoares/) |
+
