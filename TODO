@@ -7,5 +7,36 @@ Documentar
 Criar Projeto no Jira
 Setar Definir as tasks dos metodos que não foram implementados
 
-MISSING TYPE:
-
+MISSING METHODS:
+sendVideoNote
+sendMediaGroup
+editMessageLiveLocation
+stopMessageLiveLocation
+sendPoll
+sendDice
+sendChatAction
+getUserProfilePhotos
+getFile
+kickChatMember
+unbanChatMember
+restictChatMember
+promoteChatMembers
+setChatAdministratorCustomTitle
+setChatPermissions
+exportChatIniviteLink
+setChatPhoto
+deleteChatPhoto
+setChatTitle
+setChatDescription
+pinChatMessage
+leaveChat
+getChat
+getChatAdministrators
+getChatMembersCount
+getChatMember
+setChatStickerSet
+deleChatStickerSet
+answerCallbackQuery
+setMyCommnds
+getMyCommands
+InlineModeMethos
