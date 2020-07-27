@@ -5,7 +5,7 @@ import (
 	"net/url"
 )
 
-//Set the bot token
+//Set the bot token and returns the API object
 func SetNewBot(token string) API {
 	Config.Token = token
 	return Config
@@ -54,6 +54,7 @@ func (Config *API) ForwardMessage(message SetMessage, chat_id int) int {
 	return stat
 }
 
+//Send a photo
 func (Config *API) SendPhoto(chat_id int, photo string) int {
 	Config.Method = "sendPhoto"
 	MessageBind.sendingphoto = ToSendPhoto{
@@ -64,6 +65,7 @@ func (Config *API) SendPhoto(chat_id int, photo string) int {
 	return stat
 }
 
+//Send an audio
 func (Config *API) SendAudio(chat_id int, audio string) int {
 	Config.Method = "sendAudio"
 	MessageBind.sendingaudio = ToSendAudio{
@@ -74,6 +76,8 @@ func (Config *API) SendAudio(chat_id int, audio string) int {
 	return stat
 }
 
+
+//Send a Document
 func (Config *API) SendDocument(chat_id int, document string) int {
 	Config.Method = "sendDocument"
 	MessageBind.sendingdocument = ToSendDocument{
@@ -84,6 +88,7 @@ func (Config *API) SendDocument(chat_id int, document string) int {
 	return stat
 }
 
+//Send a Video
 func (Config *API) SendVideo(chat_id int, video string) int {
 	Config.Method = "sendVideo"
 	MessageBind.sendingvideo = ToSendVideo{
@@ -94,6 +99,8 @@ func (Config *API) SendVideo(chat_id int, video string) int {
 	return stat
 }
 
+
+//Send an Animation
 func (Config *API) SendAnimation(chat_id int, animation string) int {
 	Config.Method = "sendAnimation"
 	MessageBind.sendinganimation = ToSendAnimation{
@@ -104,6 +111,8 @@ func (Config *API) SendAnimation(chat_id int, animation string) int {
 	return stat
 }
 
+
+//Send Voice
 func (Config *API) SendVoice(chat_id int, voice string) int {
 	Config.Method = "sendVoice"
 	MessageBind.sendingvoice = ToSendVoice{
@@ -114,6 +123,8 @@ func (Config *API) SendVoice(chat_id int, voice string) int {
 	return stat
 }
 
+
+//Send a Location
 func (Config *API) SendLocation(chat_id int, latitude float64, longitude float64) int {
 	Config.Method = "sendLocation"
 	MessageBind.sendinglocation = ToSendLocation{
@@ -125,28 +136,30 @@ func (Config *API) SendLocation(chat_id int, latitude float64, longitude float64
 	return stat
 }
 
-func (Config *API) SendMediaGrou()
+
 
 //Make a "getUpdates" requests and handle the json
 func (Config *API) GetAllUpdates() (bool, SetMessage) {
 	Config.Method = "getUpdates"
 	_, _ = Config.makeAPIrequest(url.Values{})
 	for _, msg := range Bind.Result {
-		Nova = msg.Message
+		New = msg.Message
 	}
 	if len(Nova.Text) > 0 && Nova.MessageID != Config.Current {
-		Config.Updated = Nova
-		Config.Current = Nova.MessageID
+		Config.Updated = New
+		Config.Current = New.MessageID
 		NewMsg = true
 	} else {
 		Config.Updated.Text = ""
 		NewMsg = false
 
 	}
-	return NewMsg, Nova
+	return NewMsg, New
 
 }
 
+
+// Returns the array of message the bot received/read
 func (Config *API) GetMsgUpdates() MsgUpdater {
 	Config.Method = "getUpdates"
 	_, _ = Config.makeAPIrequest(url.Values{})
@@ -154,7 +167,7 @@ func (Config *API) GetMsgUpdates() MsgUpdater {
 
 }
 
-//Webhook
+//WIP
 
 func (Config *API) SetWebhookWithCert(url string, certificate string) int {
 	Config.Method = "setWebhook"
