@@ -6,14 +6,14 @@ import (
 )
 
 //Set the bot token
-func Conf(token string) Load {
+func SetNewBot(token string) API {
 	Config.Token = token
 	return Config
 }
 
 //Send a message
-func (Config *Load) Send_Message(chat_id int, text string) int {
-	Config.Metodo = "SendMessage"
+func (Config *API) Send_Message(chat_id int, text string) int {
+	Config.Method = "SendMessage"
 	MessageBind.sending = ToSend{
 		chat_id,
 		text,
@@ -23,8 +23,8 @@ func (Config *Load) Send_Message(chat_id int, text string) int {
 }
 
 //Reply to a message
-func (Config *Load) Reply_To(message SetMessage, chat_id int, text string) int {
-	Config.Metodo = "SendMessage"
+func (Config *API) Reply_To(message SetMessage, chat_id int, text string) int {
+	Config.Method = "SendMessage"
 	MessageBind.replying = ToReply{
 		chat_id,
 		message.MessageID,
@@ -35,16 +35,16 @@ func (Config *Load) Reply_To(message SetMessage, chat_id int, text string) int {
 }
 
 //Get the bot info
-func (Config *Load) GetMe() MeBot {
-	Config.Metodo = "getMe"
+func (Config *API) GetMe() MeBot {
+	Config.Method = "getMe"
 	Response, _ = Config.makeAPIrequest(url.Values{})
-	json.Unmarshal([]byte(Response), &BindG)
-	return BindG
+	json.Unmarshal([]byte(Response), &BotInfo)
+	return BotInfo
 }
 
 //Foward a message
-func (Config *Load) ForwardMessage(message SetMessage, chat_id int) int {
-	Config.Metodo = "forwardMessage"
+func (Config *API) ForwardMessage(message SetMessage, chat_id int) int {
+	Config.Method = "forwardMessage"
 	MessageBind.forwarding = ToForward{
 		chat_id,
 		message.Chat.ID,
@@ -54,8 +54,8 @@ func (Config *Load) ForwardMessage(message SetMessage, chat_id int) int {
 	return stat
 }
 
-func (Config *Load) SendPhoto(chat_id int, photo string) int {
-	Config.Metodo = "sendPhoto"
+func (Config *API) SendPhoto(chat_id int, photo string) int {
+	Config.Method = "sendPhoto"
 	MessageBind.sendingphoto = ToSendPhoto{
 		chat_id,
 		photo,
@@ -64,8 +64,8 @@ func (Config *Load) SendPhoto(chat_id int, photo string) int {
 	return stat
 }
 
-func (Config *Load) SendAudio(chat_id int, audio string) int {
-	Config.Metodo = "sendAudio"
+func (Config *API) SendAudio(chat_id int, audio string) int {
+	Config.Method = "sendAudio"
 	MessageBind.sendingaudio = ToSendAudio{
 		chat_id,
 		audio,
@@ -74,8 +74,8 @@ func (Config *Load) SendAudio(chat_id int, audio string) int {
 	return stat
 }
 
-func (Config *Load) SendDocument(chat_id int, document string) int {
-	Config.Metodo = "sendDocument"
+func (Config *API) SendDocument(chat_id int, document string) int {
+	Config.Method = "sendDocument"
 	MessageBind.sendingdocument = ToSendDocument{
 		chat_id,
 		document,
@@ -84,8 +84,8 @@ func (Config *Load) SendDocument(chat_id int, document string) int {
 	return stat
 }
 
-func (Config *Load) SendVideo(chat_id int, video string) int {
-	Config.Metodo = "sendVideo"
+func (Config *API) SendVideo(chat_id int, video string) int {
+	Config.Method = "sendVideo"
 	MessageBind.sendingvideo = ToSendVideo{
 		chat_id,
 		video,
@@ -94,8 +94,8 @@ func (Config *Load) SendVideo(chat_id int, video string) int {
 	return stat
 }
 
-func (Config *Load) SendAnimation(chat_id int, animation string) int {
-	Config.Metodo = "sendAnimation"
+func (Config *API) SendAnimation(chat_id int, animation string) int {
+	Config.Method = "sendAnimation"
 	MessageBind.sendinganimation = ToSendAnimation{
 		chat_id,
 		animation,
@@ -104,8 +104,8 @@ func (Config *Load) SendAnimation(chat_id int, animation string) int {
 	return stat
 }
 
-func (Config *Load) SendVoice(chat_id int, voice string) int {
-	Config.Metodo = "sendVoice"
+func (Config *API) SendVoice(chat_id int, voice string) int {
+	Config.Method = "sendVoice"
 	MessageBind.sendingvoice = ToSendVoice{
 		chat_id,
 		voice,
@@ -114,8 +114,8 @@ func (Config *Load) SendVoice(chat_id int, voice string) int {
 	return stat
 }
 
-func (Config *Load) SendLocation(chat_id int, latitude float64, longitude float64) int {
-	Config.Metodo = "sendLocation"
+func (Config *API) SendLocation(chat_id int, latitude float64, longitude float64) int {
+	Config.Method = "sendLocation"
 	MessageBind.sendinglocation = ToSendLocation{
 		chat_id,
 		latitude,
@@ -124,9 +124,10 @@ func (Config *Load) SendLocation(chat_id int, latitude float64, longitude float6
 	_, stat := Config.makeAPIrequest(MessageBind.sendinglocation.makeParam())
 	return stat
 }
+
 //Make a "getUpdates" requests and handle the json
-func (Config *Load) GetAllUpdates() (bool, SetMessage) {
-	Config.Metodo = "getUpdates"
+func (Config *API) GetAllUpdates() (bool, SetMessage) {
+	Config.Method = "getUpdates"
 	_, _ = Config.makeAPIrequest(url.Values{})
 	for _, msg := range Bind.Result {
 		Nova = msg.Message
@@ -144,10 +145,17 @@ func (Config *Load) GetAllUpdates() (bool, SetMessage) {
 
 }
 
+func (Config *API) GetMsgUpdates() MsgUpdater {
+	Config.Method = "getUpdates"
+	_, _ = Config.makeAPIrequest(url.Values{})
+	return Bind
+
+}
+
 //Webhook
 
-func (Config *Load) SetWebhookWithCert(url string, certificate string) int{
-	Config.Metodo = "setWebhook"
+func (Config *API) SetWebhookWithCert(url string, certificate string) int {
+	Config.Method = "setWebhook"
 	MessageBind.settingwebhookwithcert = ToSetWebhookWithCert{
 		url,
 		certificate,
@@ -156,9 +164,8 @@ func (Config *Load) SetWebhookWithCert(url string, certificate string) int{
 	return stat
 }
 
-
-func (Config *Load) SetWebhook(url string) int{
-	Config.Metodo = "setWebhook"
+func (Config *API) SetWebhook(url string) int {
+	Config.Method = "setWebhook"
 	MessageBind.settingwebhook = ToSetWebhook{
 		url,
 	}
@@ -166,16 +173,14 @@ func (Config *Load) SetWebhook(url string) int{
 	return stat
 }
 
-func (Config *Load) DeleteWebhook() int{
-	Config.Metodo = "DeleteWebhook"
+func (Config *API) DeleteWebhook() int {
+	Config.Method = "DeleteWebhook"
 	_, stat := Config.makeAPIrequest(url.Values{})
 	return stat
 }
-	
- 
-func (Config *Load) GetWebhookinfo() (string, int){
-	Config.Metodo = "getWebhookinfo"
+
+func (Config *API) GetWebhookinfo() (string, int) {
+	Config.Method = "getWebhookinfo"
 	res, stat := Config.makeAPIrequest(url.Values{})
 	return res, stat
 }
-	

@@ -1,20 +1,11 @@
-Criar funções/metodos send
-criar utils(is_command) [PARCIAL][OK]
-melhorar código [PARCIAL]
-Remover todas as globais que eu puder
-reestruturar arquivos [OK]
-apply urlValues{}[OK] [PARCIAL]
+criar utils(is_command) [WIP]
 Fazer Updates com Chan
-Comentar
-fazer MakeParam dos outros stucts[OK][PARCIAL]
-Setar wenhook
-fazer testes [PARCIAL]
+fazer MakeParam dos outros stucts[WIP]
+Setar webhook feature
+fazer testes [WIP]
+Documentar
+Criar Projeto no Jira
+Setar Definir as tasks dos metodos que não foram implementados
 
 MISSING TYPE:
 
-migra to chat id
-migra from chat id
-invoice
-sucessful payment
-connected website
-passport data

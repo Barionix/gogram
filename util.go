@@ -9,27 +9,26 @@ import (
 	"strconv"
 )
 
-//Handle usual errors
 func handle_erro(err error) {
 	if err != nil {
 		fmt.Println(err)
 	}
 }
 
-//Make the requests
-func (Config *Load) makeAPIrequest(concatenado url.Values) (string, int) {
-	API_ADRESS = fmt.Sprintf("https://api.telegram.org/bot%s/%s", Config.Token, Config.Metodo)
-	resp, err := http.PostForm(API_ADRESS, concatenado)
+//Make a resquest to the API
+func (Config *API) makeAPIrequest(payload url.Values) (string, int) {
+	API_ADRESS = fmt.Sprintf("https://api.telegram.org/bot%s/%s", Config.Token, Config.Method)
+	resp, err := http.PostForm(API_ADRESS, payload)
 	defer resp.Body.Close()
 	body, er := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(body))
+
 	json.Unmarshal(body, &Bind)
 	handle_erro(err)
 	handle_erro(er)
 	return string(body), resp.StatusCode
 }
 
-//Set the the url to make a forwardMessage request
+//Make an API request to the forwardMessage method
 func (forward *ToForward) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("text", forward.Text)
@@ -40,7 +39,7 @@ func (forward *ToForward) makeParam() url.Values {
 	return param
 }
 
-//Set the the url to make a reply_to_message_id request
+//Make an API request to the reply_to_message_id method
 func (reply *ToReply) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("text", reply.Text)
@@ -50,7 +49,7 @@ func (reply *ToReply) makeParam() url.Values {
 	return param
 }
 
-//Set the the url to make a SendMessage request
+//Make an API request to the SendMessage method
 func (send *ToSend) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("text", send.Text)
@@ -58,6 +57,7 @@ func (send *ToSend) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the sendPhoto method
 func (photo *ToSendPhoto) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(photo.ChatID))
@@ -65,6 +65,7 @@ func (photo *ToSendPhoto) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the sendAudio method
 func (audio *ToSendAudio) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(audio.ChatID))
@@ -72,6 +73,7 @@ func (audio *ToSendAudio) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the sendDocument method
 func (document *ToSendDocument) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(document.ChatID))
@@ -79,6 +81,7 @@ func (document *ToSendDocument) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the sendVideo method
 func (video *ToSendVideo) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(video.ChatID))
@@ -86,6 +89,7 @@ func (video *ToSendVideo) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the sendAnimation method
 func (animation *ToSendAnimation) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(animation.ChatID))
@@ -93,6 +97,7 @@ func (animation *ToSendAnimation) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the sendVoice method
 func (voice *ToSendVoice) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(voice.ChatID))
@@ -100,15 +105,16 @@ func (voice *ToSendVoice) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the sendLocation method
 func (location *ToSendLocation) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(location.ChatID))
-	param.Set("latitude", fmt.Sprintf("%f",location.Latitude))
-	param.Set("longitude", fmt.Sprintf("%f",location.Longitude))
+	param.Set("latitude", fmt.Sprintf("%f", location.Latitude))
+	param.Set("longitude", fmt.Sprintf("%f", location.Longitude))
 	return param
 }
 
-
+//WIP
 func (webhook *ToSetWebhookWithCert) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("url", webhook.Url)
@@ -121,4 +127,3 @@ func (webhook *ToSetWebhook) makeParam() url.Values {
 	param.Set("url", webhook.Url)
 	return param
 }
-

@@ -2,18 +2,17 @@ package telego
 
 import (
 	"net/http"
-//	"net/url"
+	//	"net/url"
 )
 
 var (
-	API_ADRESS  string
-	Response    string
-	NewMsg      bool
-	Bind        Updater
-	BindG       MeBot
-	Config      Load
-	Nova        SetMessage
-	
+	API_ADRESS string // Telegram API URL
+	Response   string
+	NewMsg     bool
+	Bind       MsgUpdater
+	BotInfo    MeBot
+	Config     API
+	Nova       SetMessage
 )
 
 type SetUser struct {
@@ -25,9 +24,9 @@ type SetUser struct {
 	language_code string
 }
 
-type Load struct {
+type API struct {
 	Token    string
-	Metodo   string
+	Method   string
 	Current  int
 	Client   *http.Client
 	Updated  SetMessage
@@ -237,7 +236,7 @@ type MeBot struct {
 	} `json:"result"`
 }
 
-type Updater struct {
+type MsgUpdater struct {
 	Ok     bool `json:"ok"`
 	Result []struct {
 		UpdateID      int        `json:"update_id"`
