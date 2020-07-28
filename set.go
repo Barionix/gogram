@@ -11,6 +11,7 @@ type SetValues struct {
 	sendinganimation       ToSendAnimation
 	sendingvoice           ToSendVoice
 	sendinglocation        ToSendLocation
+	sendingvideonote       ToSendVideoNote
 	settingwebhook         ToSetWebhook
 	settingwebhookwithcert ToSetWebhookWithCert
 }
@@ -80,6 +81,16 @@ type ToSendLocation struct {
 	ChatID    int
 	Latitude  float64
 	Longitude float64
+}
+
+type ToSendVideoNote struct {
+	ChatID              int
+	VideoNote           string
+	Duration            int
+	Length              int
+	Thumb               string
+	DisableNotification bool
+	ReplyToMessageID    int
 }
 
 type ToSetWebhookWithCert struct {

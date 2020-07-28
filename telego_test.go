@@ -34,6 +34,17 @@ func TestSendPhoto(t *testing.T) {
 	}
 }
 
+func TestSendVideoNote(t *testing.T) {
+	payload := ToSendVideoNote{
+		ChatID:    476036515,
+		VideoNote: "BAACAgEAAxkBAANAXx-GBPU7S-vvVS32vNz4dmQ1V8IAAtUAA4ukAUXuhv0okZi9phoE",
+	}
+	try := Bot.SendVideoNote(payload)
+	if try != 200 {
+		t.Fatalf("Something went wrong in SendVideoNote.\nStatus Code:[%d]", try)
+	}
+}
+
 func TestSendAudio(t *testing.T) {
 	try := Bot.SendAudio(476036515, "CQADAgADmIoDAAEcg5gKx_YQOaoQbjoC")
 	if try != 200 {

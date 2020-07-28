@@ -76,7 +76,6 @@ func (Config *API) SendAudio(chat_id int, audio string) int {
 	return stat
 }
 
-
 //Send a Document
 func (Config *API) SendDocument(chat_id int, document string) int {
 	Config.Method = "sendDocument"
@@ -99,7 +98,6 @@ func (Config *API) SendVideo(chat_id int, video string) int {
 	return stat
 }
 
-
 //Send an Animation
 func (Config *API) SendAnimation(chat_id int, animation string) int {
 	Config.Method = "sendAnimation"
@@ -111,7 +109,6 @@ func (Config *API) SendAnimation(chat_id int, animation string) int {
 	return stat
 }
 
-
 //Send Voice
 func (Config *API) SendVoice(chat_id int, voice string) int {
 	Config.Method = "sendVoice"
@@ -122,7 +119,6 @@ func (Config *API) SendVoice(chat_id int, voice string) int {
 	_, stat := Config.makeAPIrequest(MessageBind.sendingvoice.makeParam())
 	return stat
 }
-
 
 //Send a Location
 func (Config *API) SendLocation(chat_id int, latitude float64, longitude float64) int {
@@ -136,7 +132,21 @@ func (Config *API) SendLocation(chat_id int, latitude float64, longitude float64
 	return stat
 }
 
+func (Config *API) SendVideoNote(payload ToSendVideoNote) int {
+	Config.Method = "sendVideoNote"
+	MessageBind.sendingvideonote = ToSendVideoNote{
+		payload.ChatID,
+		payload.VideoNote,
+		payload.Duration,
+		payload.Length,
+		payload.Thumb,
+		payload.DisableNotification,
+		payload.ReplyToMessageID,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.sendingvideonote.makeParam())
+	return stat
 
+}
 
 //Make a "getUpdates" requests and handle the json
 func (Config *API) GetAllUpdates() (bool, SetMessage) {
@@ -145,7 +155,7 @@ func (Config *API) GetAllUpdates() (bool, SetMessage) {
 	for _, msg := range Bind.Result {
 		New = msg.Message
 	}
-	if len(Nova.Text) > 0 && Nova.MessageID != Config.Current {
+	if len(New.Text) > 0 && New.MessageID != Config.Current {
 		Config.Updated = New
 		Config.Current = New.MessageID
 		NewMsg = true
@@ -157,7 +167,6 @@ func (Config *API) GetAllUpdates() (bool, SetMessage) {
 	return NewMsg, New
 
 }
-
 
 // Returns the array of message the bot received/read
 func (Config *API) GetMsgUpdates() MsgUpdater {

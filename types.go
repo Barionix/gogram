@@ -6,13 +6,13 @@ import (
 )
 
 var (
-	API_ADRESS string // Telegram API URL
-	Response   string
-	NewMsg     bool
-	Bind       MsgUpdater
-	BotInfo    MeBot
-	Config     API
-	Nova       SetMessage
+	API_ADDRESS string // Telegram API URL
+	Response    string
+	NewMsg      bool
+	Bind        MsgUpdater
+	BotInfo     MeBot
+	Config      API
+	New         SetMessage
 )
 
 type SetUser struct {
@@ -267,21 +267,21 @@ type SetInputMediaVideo struct {
 }
 
 type SetInputMediaAnimation struct {
-	Type string `json:"type"`
-	Media string `json:"media"`
-	Thumb string `json:"thumb"`
-	Caption string `json:"caption"`
+	Type       string `json:"type"`
+	Media      string `json:"media"`
+	Thumb      string `json:"thumb"`
+	Caption    string `json:"caption"`
 	Parse_mode string `json:"parse_mode"`
-	Duration int `json:"duration"`
-	Perfomer string `json:"performer"`
-	Title string `json:"title"`
+	Duration   int    `json:"duration"`
+	Perfomer   string `json:"performer"`
+	Title      string `json:"title"`
 }
 
 type SetInputMediaDocument struct {
-	Type string `json:"type"`
-	Media string `json:"media"`
-	Thumb string `json:"thumb"`
-	Caption string `json:"caption"`
+	Type       string `json:"type"`
+	Media      string `json:"media"`
+	Thumb      string `json:"thumb"`
+	Caption    string `json:"caption"`
 	Parse_mode string `json:"parse_mode"`
 }
 type SetMediaGroup struct {
@@ -356,69 +356,68 @@ type SetLoginUrl struct {
 }
 
 type SetCallbackQuery struct {
-	ID string `json:"id"`
-	From SetUser `json:"from"`
-	Message SetMessage `json:"message"`
-	InlineMessageID string `json:"inline_message_id"`
-	ChatInsance string `json:"chat_instance"`
-	Data string `json:"data"`
-	GameShortName string `json:"game_short_name"`
+	ID              string     `json:"id"`
+	From            SetUser    `json:"from"`
+	Message         SetMessage `json:"message"`
+	InlineMessageID string     `json:"inline_message_id"`
+	ChatInsance     string     `json:"chat_instance"`
+	Data            string     `json:"data"`
+	GameShortName   string     `json:"game_short_name"`
 }
-
 
 type SetForceReply struct {
 	ForceReply bool `json:"force_reply"`
-	Selective bool `json:"selective"`
+	Selective  bool `json:"selective"`
 }
 
 type SetChatPhoto struct {
-	SmallFileID string `json:"small_file_id"`
+	SmallFileID       string `json:"small_file_id"`
 	SmallFileUniqueID string `json:"small_file_unique_id"`
-	BigFileID string `json:"big_file_id"`
-	BigFileUniqueID string `json:"big_file_unique_id"`
+	BigFileID         string `json:"big_file_id"`
+	BigFileUniqueID   string `json:"big_file_unique_id"`
 }
 
 type SetChatMember struct {
-	User SetUser `json:"user"`
-	Status string `json:"status"`
-	CustomTitle string `json:"custom_title"`
-	UntilDate int `json:"until_date"`
-	CanBeEdited bool `json:"can_be_edited"`
-	CanPostMessage bool `json:"can_post_messages"`
-	CanEditMessage bool `json:"can_edit_messages"`
-	CanDeleteMessage bool `json:"can_delete_messages"`
-	CanRestrictMembers bool `json:"can_restrict_members"`
-	CanPromoteMembers bool `json:"can_promote_members"`
-	CanChangeInfo bool `json:"can_change_info"`
-	CanInviteUsers bool `json:"can_invite_users"`
-	CanPinMessage bool `json:"can_pin_messages"`
-	IsMember bool `json:"is_member"`
-	CanSendMessages bool `json:"can_send_messages"`
-	CanSendMediaMessage bool `json:"can_send_media_messages"`
-	CanSendPolls bool `json:"can_send_polls"`
-	CanSendOtherMessages bool `json:"can_send_other_messages"`
-	CanAddWebPagePreviews bool `json:"can_add_web_page_previews"`
+	User                  SetUser `json:"user"`
+	Status                string  `json:"status"`
+	CustomTitle           string  `json:"custom_title"`
+	UntilDate             int     `json:"until_date"`
+	CanBeEdited           bool    `json:"can_be_edited"`
+	CanPostMessage        bool    `json:"can_post_messages"`
+	CanEditMessage        bool    `json:"can_edit_messages"`
+	CanDeleteMessage      bool    `json:"can_delete_messages"`
+	CanRestrictMembers    bool    `json:"can_restrict_members"`
+	CanPromoteMembers     bool    `json:"can_promote_members"`
+	CanChangeInfo         bool    `json:"can_change_info"`
+	CanInviteUsers        bool    `json:"can_invite_users"`
+	CanPinMessage         bool    `json:"can_pin_messages"`
+	IsMember              bool    `json:"is_member"`
+	CanSendMessages       bool    `json:"can_send_messages"`
+	CanSendMediaMessage   bool    `json:"can_send_media_messages"`
+	CanSendPolls          bool    `json:"can_send_polls"`
+	CanSendOtherMessages  bool    `json:"can_send_other_messages"`
+	CanAddWebPagePreviews bool    `json:"can_add_web_page_previews"`
 }
 
 type SetChatPermissions struct {
-	CanSendMessages bool `json:"can_send_messages"`
-	CanSendMediaMessage bool `json:"can_send_media_messages"`
-	CanSendPolls bool `json:"can_send_polls"`
-	CanSendOtherMessages bool `json:"can_send_other_messages"`
+	CanSendMessages       bool `json:"can_send_messages"`
+	CanSendMediaMessage   bool `json:"can_send_media_messages"`
+	CanSendPolls          bool `json:"can_send_polls"`
+	CanSendOtherMessages  bool `json:"can_send_other_messages"`
 	CanAddWebPagePreviews bool `json:"can_add_web_page_previews"`
-	CanChangeInfo bool `json:"can_change_info"`
-	CanInviteUsers bool `json:"can_invite_users"`
-	CanPinMessage bool `json:"can_pin_messages"`
+	CanChangeInfo         bool `json:"can_change_info"`
+	CanInviteUsers        bool `json:"can_invite_users"`
+	CanPinMessage         bool `json:"can_pin_messages"`
 }
 
 type SetBotCommand struct {
-	Command string `json:"command"`
+	Command     string `json:"command"`
 	Description string `json:"description"`
 }
 
 type SetResponseParameters struct {
 	MigrateToChatID string `json:"migrate_to_chat_id"`
-	RetryAfter int `json:"retry_after"`
+	RetryAfter      int    `json:"retry_after"`
 }
 
 type MeBot struct {

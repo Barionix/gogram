@@ -17,8 +17,8 @@ func handle_erro(err error) {
 
 //Make a resquest to the API
 func (Config *API) makeAPIrequest(payload url.Values) (string, int) {
-	API_ADRESS = fmt.Sprintf("https://api.telegram.org/bot%s/%s", Config.Token, Config.Method)
-	resp, err := http.PostForm(API_ADRESS, payload)
+	API_ADDRESS = fmt.Sprintf("https://api.telegram.org/bot%s/%s", Config.Token, Config.Method)
+	resp, err := http.PostForm(API_ADDRESS, payload)
 	defer resp.Body.Close()
 	body, er := ioutil.ReadAll(resp.Body)
 
@@ -81,7 +81,21 @@ func (document *ToSendDocument) makeParam() url.Values {
 	return param
 }
 
-//Make an API request to the sendVideo method
+//Set the body parameters to sendVideoNote
+func (video *ToSendVideoNote) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(video.ChatID))
+	param.Set("video_note", video.VideoNote)
+	param.Set("duration", strconv.Itoa(video.Duration))
+	param.Set("length", strconv.Itoa(video.Length))
+	param.Set("thumb", video.Thumb)
+	param.Set("disable_notification", strconv.FormatBool(video.DisableNotification))
+	param.Set("reply_to_message_id", strconv.Itoa(video.ReplyToMessageID))
+
+	return param
+}
+
+//Make an API request to the sendVideoNote method
 func (video *ToSendVideo) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(video.ChatID))
