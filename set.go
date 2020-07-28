@@ -93,6 +93,13 @@ type ToSendVideoNote struct {
 	ReplyToMessageID    int
 }
 
+type ToSendMediaGroup struct {
+	ChatID              int
+	Media               []SetInputMediaPhoto
+	DisableNotification bool
+	ReplyToMessageID    int
+}
+
 type ToSetWebhookWithCert struct {
 	Url         string
 	Certificate string

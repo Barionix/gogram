@@ -41,6 +41,7 @@ The code above start the bot, listen to incomin messages and returns a JSON cont
 | Method | Status | Tested |
 | ------ | ------ | ------ |
 | Send_Message | Done | Yes |
+| SendVideoNote | Done | Yes |
 | Reply_To | Done | Yes |
 | GetMe | Done | Yes |
 | FowardMessage | Done | Yes |

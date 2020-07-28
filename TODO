@@ -8,7 +8,6 @@ Criar Projeto no Jira
 Setar Definir as tasks dos metodos que não foram implementados
 
 MISSING METHODS:
-sendVideoNote
 sendMediaGroup
 editMessageLiveLocation
 stopMessageLiveLocation
