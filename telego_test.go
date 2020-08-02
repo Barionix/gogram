@@ -56,6 +56,27 @@ func TestKickChatMember(t *testing.T) {
 	}
 }
 
+func TestRestrictChatMembers(t *testing.T) {
+	payload := ToRestrictChatMembers{
+		ChatID: -1001288797747,
+		UserID: 1122169250,
+		Permissions: ChatPermissions{
+			CanSendMessages:       true,
+			CanSendMediaMessage:   false,
+			CanSendPolls:          false,
+			CanSendOtherMessages:  false,
+			CanAddWebPagePreviews: false,
+			CanChangeInfo:         true,
+			CanInviteUsers:        false,
+			CanPinMessage:         false,
+		},
+	}
+	try := Bot.RestrictChatMember(payload)
+	if try != 200 {
+		t.Fatalf("Something went wrong in RestrictChatMember.\nStatus Code:[%d]", try)
+	}
+}
+
 /*
 func TestSendMediaGroup(t *testing.T) {
 	payload := ToSendMediaGroup{

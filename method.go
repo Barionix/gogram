@@ -136,6 +136,18 @@ func (chat *ToKickChatMember) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the restrictChatMembet method
+func (chat *ToRestrictChatMembers) makeParam() url.Values {
+	param := url.Values{}
+	Permissions, err := json.Marshal(chat.Permissions)
+	handle_erro(err)
+	param.Set("chat_id", strconv.Itoa(chat.ChatID))
+	param.Set("user_id", strconv.Itoa(chat.UserID))
+	param.Set("permissions", BytesToString(Permissions))
+	param.Set("until_date", strconv.Itoa(chat.UntilDate))
+	return param
+}
+
 //WIP
 func (webhook *ToSetWebhookWithCert) makeParam() url.Values {
 	param := url.Values{}

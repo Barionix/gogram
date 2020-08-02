@@ -65,6 +65,18 @@ func (Config *API) KickChatMember(chat ToKickChatMember) int {
 	return stat
 }
 
+//RestrictChatMember
+func (Config *API) RestrictChatMember(chat ToRestrictChatMembers) int {
+	Config.Method = "restrictChatMember"
+	MessageBind.restrictingChatMember = ToRestrictChatMembers{
+		chat.ChatID,
+		chat.UserID,
+		chat.Permissions,
+		chat.UntilDate}
+	_, stat := Config.makeAPIrequest(MessageBind.restrictingChatMember.makeParam())
+	return stat
+}
+
 //Send a photo
 func (Config *API) SendPhoto(chat_id int, photo string) int {
 	Config.Method = "sendPhoto"

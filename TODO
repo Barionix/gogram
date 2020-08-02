@@ -13,7 +13,6 @@ promoteChatMembers
 unbanChatMember
 setChatPermissions
 setChatAdministratorCustomTitle
-restictChatMember
 setChatTitle
 sendMediaGroup
 editMessageLiveLocation

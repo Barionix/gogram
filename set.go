@@ -14,6 +14,7 @@ type SetValues struct {
 	sendingvideonote       ToSendVideoNote
 	sendingmediagroup      ToSendMediaGroup
 	kickingChatmember      ToKickChatMember
+	restrictingChatMember  ToRestrictChatMembers
 	settingwebhook         ToSetWebhook
 	settingwebhookwithcert ToSetWebhookWithCert
 }
@@ -106,6 +107,24 @@ type ToSendMediaGroup struct {
 	Media               []InputMediaPhoto
 	DisableNotification bool
 	ReplyToMessageID    int
+}
+
+type ToRestrictChatMembers struct {
+	ChatID      int
+	UserID      int
+	Permissions ChatPermissions
+	UntilDate   int
+}
+
+type ChatPermissions struct {
+	CanSendMessages       bool
+	CanSendMediaMessage   bool
+	CanSendPolls          bool
+	CanSendOtherMessages  bool
+	CanAddWebPagePreviews bool
+	CanChangeInfo         bool
+	CanInviteUsers        bool
+	CanPinMessage         bool
 }
 
 type ToSetWebhookWithCert struct {
