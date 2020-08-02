@@ -54,6 +54,9 @@ The code above start the bot, listen to incomin messages and returns a JSON cont
 | SendLocation | Done | Yes |
 | GetAllUpdates | Done | Yes |
 | GetMsgUpdates | Done | Yes |
+| kickChatMember | Done | Yes |
+| restrictChatMember | Done | Yes |
+
 
 
 
