@@ -91,11 +91,23 @@ func TestSetChatTitle(t *testing.T) {
 func TestSetChatDescription(t *testing.T) {
 	payload := ToSetChatDescription{
 		ChatID:      -1001288797747,
-		Description: "GOGRAM DEVELOPMENT PROCESS",
+		Description: "GOGRAM DEVELOPMENT PROCESS - DESC",
 	}
 	try := Bot.SetChatDescription(payload)
 	if try != 200 {
 		t.Fatalf("Something went wrong in SetChatDescription.\nStatus Code:[%d]", try)
+	}
+}
+
+func TestSetChatAdministratorCustomTitle(t *testing.T) {
+	payload := ToSetChatAdministratorCustomTitle{
+		ChatID:      -1001288797747,
+		UserID:      811530665,
+		CustomTitle: "Freaking Boss",
+	}
+	try := Bot.SetChatAdministratorCustomTitle(payload)
+	if try != 200 {
+		t.Fatalf("Something went wrong in SetChatAdministratorCustomTitle.\nStatus Code:[%d]", try)
 	}
 }
 

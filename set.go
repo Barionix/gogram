@@ -1,25 +1,26 @@
 package gogram
 
 type SetValues struct {
-	forwarding             ToForward
-	replying               ToReply
-	sending                ToSend
-	sendingphoto           ToSendPhoto
-	sendingaudio           ToSendAudio
-	sendingdocument        ToSendDocument
-	sendingvideo           ToSendVideo
-	sendinganimation       ToSendAnimation
-	sendingvoice           ToSendVoice
-	sendinglocation        ToSendLocation
-	sendingvideonote       ToSendVideoNote
-	sendingmediagroup      ToSendMediaGroup
-	kickingChatmember      ToKickChatMember
-	settingChatTitle       ToSetChatTitle
-	settingChatPermissions ToSetChatPermissions
-	settingCHatDescription ToSetChatDescription
-	restrictingChatMember  ToRestrictChatMembers
-	settingwebhook         ToSetWebhook
-	settingwebhookwithcert ToSetWebhookWithCert
+	forwarding                          ToForward
+	replying                            ToReply
+	sending                             ToSend
+	sendingphoto                        ToSendPhoto
+	sendingaudio                        ToSendAudio
+	sendingdocument                     ToSendDocument
+	sendingvideo                        ToSendVideo
+	sendinganimation                    ToSendAnimation
+	sendingvoice                        ToSendVoice
+	sendinglocation                     ToSendLocation
+	sendingvideonote                    ToSendVideoNote
+	sendingmediagroup                   ToSendMediaGroup
+	kickingChatmember                   ToKickChatMember
+	settingChatTitle                    ToSetChatTitle
+	settingChatPermissions              ToSetChatPermissions
+	settingCHatDescription              ToSetChatDescription
+	settingChatAdministratorCustomTitle ToSetChatAdministratorCustomTitle
+	restrictingChatMember               ToRestrictChatMembers
+	settingwebhook                      ToSetWebhook
+	settingwebhookwithcert              ToSetWebhookWithCert
 }
 
 var MessageBind SetValues
@@ -118,6 +119,12 @@ type ToSetChatDescription struct {
 type ToSetChatPermissions struct {
 	ChatID      int
 	Permissions ChatPermissions
+}
+
+type ToSetChatAdministratorCustomTitle struct {
+	ChatID      int
+	UserID      int
+	CustomTitle string
 }
 type ToSendMediaGroup struct {
 	ChatID              int

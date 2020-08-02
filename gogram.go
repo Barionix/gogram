@@ -110,6 +110,18 @@ func (Config *API) SetChatPermissions(chat ToSetChatPermissions) int {
 	return stat
 }
 
+//setChatAdministratorCustomTitle
+func (Config *API) SetChatAdministratorCustomTitle(chat ToSetChatAdministratorCustomTitle) int {
+	Config.Method = "setChatAdministratorCustomTitle"
+	MessageBind.settingChatAdministratorCustomTitle = ToSetChatAdministratorCustomTitle{
+		chat.ChatID,
+		chat.UserID,
+		chat.CustomTitle,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.settingChatAdministratorCustomTitle.makeParam())
+	return stat
+}
+
 //Send a photo
 func (Config *API) SendPhoto(chat_id int, photo string) int {
 	Config.Method = "sendPhoto"
