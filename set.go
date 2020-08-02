@@ -16,6 +16,7 @@ type SetValues struct {
 	kickingChatmember      ToKickChatMember
 	settingChatTitle       ToSetChatTitle
 	settingChatPermissions ToSetChatPermissions
+	settingCHatDescription ToSetChatDescription
 	restrictingChatMember  ToRestrictChatMembers
 	settingwebhook         ToSetWebhook
 	settingwebhookwithcert ToSetWebhookWithCert
@@ -107,6 +108,11 @@ type ToKickChatMember struct {
 type ToSetChatTitle struct {
 	ChatID int
 	Title  string
+}
+
+type ToSetChatDescription struct {
+	ChatID      int
+	Description string
 }
 
 type ToSetChatPermissions struct {

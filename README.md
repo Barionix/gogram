@@ -56,6 +56,7 @@ The code above start the bot, listen to incomin messages and returns a JSON cont
 | GetMsgUpdates | Done | Yes |
 | SetChatTitle | Done | Yes |
 | SetChatPermissions | Done | Yes |
+| SetChatDescription | Done | Yes |
 | kickChatMember | Done | Yes |
 | restrictChatMember | Done | Yes |
 

@@ -22,7 +22,6 @@ getFile
 exportChatIniviteLink
 setChatPhoto
 deleteChatPhoto
-setChatDescription
 pinChatMessage
 leaveChat
 getChat

@@ -156,6 +156,14 @@ func (chat *ToSetChatTitle) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the setChatDescriptions method
+func (chat *ToSetChatDescription) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(chat.ChatID))
+	param.Set("description", chat.Description)
+	return param
+}
+
 //Make an API request to the setChatPermissions method
 func (chat *ToSetChatPermissions) makeParam() url.Values {
 	param := url.Values{}

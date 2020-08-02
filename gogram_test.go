@@ -88,6 +88,17 @@ func TestSetChatTitle(t *testing.T) {
 	}
 }
 
+func TestSetChatDescription(t *testing.T) {
+	payload := ToSetChatDescription{
+		ChatID:      -1001288797747,
+		Description: "GOGRAM DEVELOPMENT PROCESS",
+	}
+	try := Bot.SetChatDescription(payload)
+	if try != 200 {
+		t.Fatalf("Something went wrong in SetChatDescription.\nStatus Code:[%d]", try)
+	}
+}
+
 func TestSetChatPermissions(t *testing.T) {
 	payload := ToSetChatPermissions{
 		ChatID: -1001288797747,
