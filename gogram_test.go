@@ -77,6 +77,17 @@ func TestRestrictChatMembers(t *testing.T) {
 	}
 }
 
+func TestSetChatTitle(t *testing.T) {
+	payload := ToSetChatTitle{
+		ChatID: -1001288797747,
+		Title:  "GOGRAM DEVELOPMENT PROCESS",
+	}
+	try := Bot.SetChatTitle(payload)
+	if try != 200 {
+		t.Fatalf("Something went wrong in SetChatTitle.\nStatus Code:[%d]", try)
+	}
+}
+
 /*
 func TestSendMediaGroup(t *testing.T) {
 	payload := ToSendMediaGroup{

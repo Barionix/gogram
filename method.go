@@ -148,6 +148,14 @@ func (chat *ToRestrictChatMembers) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the setChatTitle method
+func (chat *ToSetChatTitle) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(chat.ChatID))
+	param.Set("title", chat.Title)
+	return param
+}
+
 //WIP
 func (webhook *ToSetWebhookWithCert) makeParam() url.Values {
 	param := url.Values{}

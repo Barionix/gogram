@@ -77,6 +77,17 @@ func (Config *API) RestrictChatMember(chat ToRestrictChatMembers) int {
 	return stat
 }
 
+//SetChatTitle
+func (Config *API) SetChatTitle(chat ToSetChatTitle) int {
+	Config.Method = "setChatTitle"
+	MessageBind.settingChatTitle = ToSetChatTitle{
+		chat.ChatID,
+		chat.Title,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.settingChatTitle.makeParam())
+	return stat
+}
+
 //Send a photo
 func (Config *API) SendPhoto(chat_id int, photo string) int {
 	Config.Method = "sendPhoto"
