@@ -15,6 +15,7 @@ type SetValues struct {
 	sendingmediagroup      ToSendMediaGroup
 	kickingChatmember      ToKickChatMember
 	settingChatTitle       ToSetChatTitle
+	settingChatPermissions ToSetChatPermissions
 	restrictingChatMember  ToRestrictChatMembers
 	settingwebhook         ToSetWebhook
 	settingwebhookwithcert ToSetWebhookWithCert
@@ -108,6 +109,10 @@ type ToSetChatTitle struct {
 	Title  string
 }
 
+type ToSetChatPermissions struct {
+	ChatID      int
+	Permissions ChatPermissions
+}
 type ToSendMediaGroup struct {
 	ChatID              int
 	Media               []InputMediaPhoto

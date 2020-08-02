@@ -88,6 +88,17 @@ func (Config *API) SetChatTitle(chat ToSetChatTitle) int {
 	return stat
 }
 
+//SetChatPermissions
+func (Config *API) SetChatPermissions(chat ToSetChatPermissions) int {
+	Config.Method = "setChatPermissions"
+	MessageBind.settingChatPermissions = ToSetChatPermissions{
+		chat.ChatID,
+		chat.Permissions,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.settingChatPermissions.makeParam())
+	return stat
+}
+
 //Send a photo
 func (Config *API) SendPhoto(chat_id int, photo string) int {
 	Config.Method = "sendPhoto"

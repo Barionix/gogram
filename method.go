@@ -156,6 +156,16 @@ func (chat *ToSetChatTitle) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the setChatPermissions method
+func (chat *ToSetChatPermissions) makeParam() url.Values {
+	param := url.Values{}
+	Permissions, err := json.Marshal(chat.Permissions)
+	handle_erro(err)
+	param.Set("chat_id", strconv.Itoa(chat.ChatID))
+	param.Set("permissions", BytesToString(Permissions))
+	return param
+}
+
 //WIP
 func (webhook *ToSetWebhookWithCert) makeParam() url.Values {
 	param := url.Values{}

@@ -88,6 +88,26 @@ func TestSetChatTitle(t *testing.T) {
 	}
 }
 
+func TestSetChatPermissions(t *testing.T) {
+	payload := ToSetChatPermissions{
+		ChatID: -1001288797747,
+		Permissions: ChatPermissions{
+			CanSendMessages:       false,
+			CanSendMediaMessage:   false,
+			CanSendPolls:          false,
+			CanSendOtherMessages:  false,
+			CanAddWebPagePreviews: false,
+			CanChangeInfo:         true,
+			CanInviteUsers:        false,
+			CanPinMessage:         false,
+		},
+	}
+	try := Bot.SetChatPermissions(payload)
+	if try != 200 {
+		t.Fatalf("Something went wrong in SetChatPermissions.\nStatus Code:[%d]", try)
+	}
+}
+
 /*
 func TestSendMediaGroup(t *testing.T) {
 	payload := ToSendMediaGroup{
