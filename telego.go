@@ -54,6 +54,17 @@ func (Config *API) ForwardMessage(message SetMessage, chat_id int) int {
 	return stat
 }
 
+//KickChatMember
+func (Config *API) KickChatMember(chat ToKickChatMember) int {
+	Config.Method = "kickChatMember"
+	MessageBind.kickingChatmember = ToKickChatMember{
+		chat.ChatID,
+		chat.UserID,
+		chat.UntilDate}
+	_, stat := Config.makeAPIrequest(MessageBind.kickingChatmember.makeParam())
+	return stat
+}
+
 //Send a photo
 func (Config *API) SendPhoto(chat_id int, photo string) int {
 	Config.Method = "sendPhoto"

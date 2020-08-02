@@ -45,6 +45,40 @@ func TestSendVideoNote(t *testing.T) {
 	}
 }
 
+func TestKickChatMember(t *testing.T) {
+	payload := ToKickChatMember{
+		ChatID: -1001288797747,
+		UserID: 1122169250,
+	}
+	try := Bot.KickChatMember(payload)
+	if try != 200 {
+		t.Fatalf("Something went wrong in KicChatMember.\nStatus Code:[%d]", try)
+	}
+}
+
+/*
+func TestSendMediaGroup(t *testing.T) {
+	payload := ToSendMediaGroup{
+		ChatID: 476036515,
+		Media: []InputMediaPhoto{
+			{
+				"photo",
+				"https://commons.wikimedia.org/wiki/File:Moon.jpg",
+				"Lorem fucking ipsum",
+			},
+			{
+				"photo",
+				"https://commons.wikimedia.org/wiki/File:Moon.jpg",
+				"Lorem fucking ipsum",
+			},
+		},
+	}
+	try := Bot.SendMediaGroup(payload)
+	if try != 200 {
+		t.Fatalf("Something went wrong in SendMediaGroup.\nStatus Code:[%d]", try)
+	}
+}*/
+
 func TestSendAudio(t *testing.T) {
 	try := Bot.SendAudio(476036515, "CQADAgADmIoDAAEcg5gKx_YQOaoQbjoC")
 	if try != 200 {

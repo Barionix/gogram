@@ -81,7 +81,6 @@ func (document *ToSendDocument) makeParam() url.Values {
 	return param
 }
 
-//Set the body parameters to sendVideoNote
 func (video *ToSendVideoNote) makeParam() url.Values {
 	param := url.Values{}
 	param.Set("chat_id", strconv.Itoa(video.ChatID))
@@ -125,6 +124,15 @@ func (location *ToSendLocation) makeParam() url.Values {
 	param.Set("chat_id", strconv.Itoa(location.ChatID))
 	param.Set("latitude", fmt.Sprintf("%f", location.Latitude))
 	param.Set("longitude", fmt.Sprintf("%f", location.Longitude))
+	return param
+}
+
+//Make an API request to the kickChatMember method
+func (chat *ToKickChatMember) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(chat.ChatID))
+	param.Set("user_id", strconv.Itoa(chat.UserID))
+	param.Set("until_date", strconv.Itoa(chat.UntilDate))
 	return param
 }
 

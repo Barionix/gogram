@@ -101,6 +101,12 @@ type SetVideoNote struct {
 	FileSize int       `json:"file_size"`
 }
 
+type SetKickChatMember struct {
+	ChatID    int `json:"chat_id"`
+	UserID    int `json:"user_id"`
+	UntilDate int `json:"until_date"`
+}
+
 type SetAnimation struct {
 	FileID    string    `json:"file_id"`
 	Width     int       `json:"widht"`
@@ -252,6 +258,12 @@ type SetInputMediaPhoto struct {
 	Media      string `json:"media"`
 	Caption    string `json:"caption"`
 	Parse_mode string `json:"parse_mode"`
+}
+
+type InputMediaPhoto struct {
+	Type    string
+	Media   string
+	Caption string
 }
 
 type SetInputMediaVideo struct {

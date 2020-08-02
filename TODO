@@ -8,24 +8,23 @@ Criar Projeto no Jira
 Setar Definir as tasks dos metodos que não foram implementados
 
 MISSING METHODS:
+sendChatAction
+promoteChatMembers
+unbanChatMember
+setChatPermissions
+setChatAdministratorCustomTitle
+restictChatMember
+setChatTitle
 sendMediaGroup
 editMessageLiveLocation
 stopMessageLiveLocation
 sendPoll
 sendDice
-sendChatAction
 getUserProfilePhotos
 getFile
-kickChatMember
-unbanChatMember
-restictChatMember
-promoteChatMembers
-setChatAdministratorCustomTitle
-setChatPermissions
 exportChatIniviteLink
 setChatPhoto
 deleteChatPhoto
-setChatTitle
 setChatDescription
 pinChatMessage
 leaveChat
