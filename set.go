@@ -19,6 +19,7 @@ type SetValues struct {
 	settingCHatDescription              ToSetChatDescription
 	settingChatAdministratorCustomTitle ToSetChatAdministratorCustomTitle
 	restrictingChatMember               ToRestrictChatMembers
+	pinningChatMessage                  ToPinChatMessage
 	settingwebhook                      ToSetWebhook
 	settingwebhookwithcert              ToSetWebhookWithCert
 }
@@ -48,7 +49,6 @@ type ToReply struct {
 	Text      string
 }
 
-//Object set to SendMessage
 type ToSend struct {
 	ChatID int
 	Text   string
@@ -98,6 +98,12 @@ type ToSendVideoNote struct {
 	Thumb               string
 	DisableNotification bool
 	ReplyToMessageID    int
+}
+
+type ToPinChatMessage struct {
+	ChatID              int
+	MessageID           int
+	DisableNotification bool
 }
 
 type ToKickChatMember struct {

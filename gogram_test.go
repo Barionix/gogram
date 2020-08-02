@@ -99,6 +99,16 @@ func TestSetChatDescription(t *testing.T) {
 	}
 }
 
+func TestPinChatMessage(t *testing.T) {
+	payload := ToPinChatMessage{
+		ChatID:    -1001288797747,
+		MessageID: 4,
+	}
+	try := Bot.PinChatMessage(payload)
+	if try != 200 {
+		t.Fatalf("Something went wrong in PinChatMessage.\nStatus Code:[%d]", try)
+	}
+}
 func TestSetChatAdministratorCustomTitle(t *testing.T) {
 	payload := ToSetChatAdministratorCustomTitle{
 		ChatID:      -1001288797747,

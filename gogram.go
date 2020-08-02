@@ -110,6 +110,18 @@ func (Config *API) SetChatPermissions(chat ToSetChatPermissions) int {
 	return stat
 }
 
+//PinChatMessage
+func (Config *API) PinChatMessage(chat ToPinChatMessage) int {
+	Config.Method = "pinChatMessage"
+	MessageBind.pinningChatMessage = ToPinChatMessage{
+		chat.ChatID,
+		chat.MessageID,
+		chat.DisableNotification,
+	}
+	_, stat := Config.makeAPIrequest(MessageBind.pinningChatMessage.makeParam())
+	return stat
+}
+
 //setChatAdministratorCustomTitle
 func (Config *API) SetChatAdministratorCustomTitle(chat ToSetChatAdministratorCustomTitle) int {
 	Config.Method = "setChatAdministratorCustomTitle"

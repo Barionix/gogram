@@ -164,6 +164,15 @@ func (chat *ToSetChatDescription) makeParam() url.Values {
 	return param
 }
 
+//Make an API request to the pinChatMessage method
+func (chat *ToPinChatMessage) makeParam() url.Values {
+	param := url.Values{}
+	param.Set("chat_id", strconv.Itoa(chat.ChatID))
+	param.Set("message_id", strconv.Itoa(chat.MessageID))
+	param.Set("disable_notification", strconv.FormatBool(chat.DisableNotification))
+	return param
+}
+
 //Make an API request to the setChatPermissions method
 func (chat *ToSetChatPermissions) makeParam() url.Values {
 	param := url.Values{}
